@@ -122,7 +122,7 @@ export default function ConfirmacionPage({ params }: ConfirmacionPageProps) {
                       <p className="text-sm text-muted-foreground">Cantidad: {item.quantity}</p>
                     </div>
                     <p className="font-semibold">
-                      {formatPrice(item.price * item.quantity, "CLP")}
+                      {formatPrice(item.price * item.quantity, { currency: "CLP" })}
                     </p>
                   </div>
                 ))}
@@ -130,15 +130,15 @@ export default function ConfirmacionPage({ params }: ConfirmacionPageProps) {
                 <div className="pt-3 space-y-2">
                   <div className="flex justify-between text-sm">
                     <span>Subtotal:</span>
-                    <span>{formatPrice(order.subtotal, "CLP")}</span>
+                    <span>{formatPrice(order.subtotal, { currency: "CLP" })}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Envío:</span>
-                    <span>{order.shipping === 0 ? "Gratis" : formatPrice(order.shipping, "CLP")}</span>
+                    <span>{order.shipping === 0 ? "Gratis" : formatPrice(order.shipping, { currency: "CLP" })}</span>
                   </div>
                   <div className="flex justify-between text-lg font-bold pt-2 border-t">
                     <span>Total:</span>
-                    <span className="text-primary">{formatPrice(order.total, "CLP")}</span>
+                    <span className="text-primary">{formatPrice(order.total, { currency: "CLP" })}</span>
                   </div>
                 </div>
               </CardContent>

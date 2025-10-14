@@ -141,7 +141,7 @@ export default function WebpayPage() {
                   <div key={index} className="flex justify-between text-sm">
                     <span>{item.productName || item.productId} x{item.quantity}</span>
                     <span className="font-medium">
-                      {formatPrice(item.price * item.quantity, "CLP")}
+                      {formatPrice(item.price * item.quantity, { currency: "CLP" })}
                     </span>
                   </div>
                 ))}
@@ -149,15 +149,15 @@ export default function WebpayPage() {
                 <div className="border-t pt-2 mt-2 space-y-1">
                   <div className="flex justify-between text-sm">
                     <span>Subtotal:</span>
-                    <span>{formatPrice(order.subtotal, "CLP")}</span>
+                    <span>{formatPrice(order.subtotal, { currency: "CLP" })}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Envío:</span>
-                    <span>{order.shipping === 0 ? "Gratis" : formatPrice(order.shipping, "CLP")}</span>
+                    <span>{order.shipping === 0 ? "Gratis" : formatPrice(order.shipping, { currency: "CLP" })}</span>
                   </div>
                   <div className="flex justify-between text-lg font-bold pt-2 border-t">
                     <span>Total:</span>
-                    <span className="text-primary">{formatPrice(order.total, "CLP")}</span>
+                    <span className="text-primary">{formatPrice(order.total, { currency: "CLP" })}</span>
                   </div>
                 </div>
               </div>
@@ -222,7 +222,7 @@ export default function WebpayPage() {
                       ) : (
                         <>
                           <CreditCard className="w-4 h-4 mr-2" />
-                          Pagar {formatPrice(order.total, "CLP")}
+                          Pagar {formatPrice(order.total, { currency: "CLP" })}
                         </>
                       )}
                     </Button>
