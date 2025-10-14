@@ -51,12 +51,12 @@ export const PRODUCTS: Record<string, Product> = {
     comparePrice: 249990,
     currency: "CLP",
     images: {
-      hero: "/images/products/echo/hero.jpg",
-      thumbnail: "/images/products/echo/thumbnail.jpg",
+      hero: "/images/products/echo/echo-hero.webp",
+      thumbnail: "/images/products/echo/echo-hero.webp",
       gallery: [
-        "/images/products/echo/gallery-1.jpg",
-        "/images/products/echo/gallery-2.jpg",
-        "/images/products/echo/gallery-3.jpg",
+        "/images/products/echo/echo-hero.webp",
+        "/images/products/echo/echo-hero.webp",
+        "/images/products/echo/echo-hero.webp",
       ],
     },
     features: [
@@ -131,12 +131,12 @@ export const PRODUCTS: Record<string, Product> = {
     comparePrice: 449990,
     currency: "CLP",
     images: {
-      hero: "/images/products/timex/hero.jpg",
-      thumbnail: "/images/products/timex/thumbnail.jpg",
+      hero: "/images/products/timex/timex-hero.webp",
+      thumbnail: "/images/products/timex/timex-hero.webp",
       gallery: [
-        "/images/products/timex/gallery-1.jpg",
-        "/images/products/timex/gallery-2.jpg",
-        "/images/products/timex/gallery-3.jpg",
+        "/images/products/timex/timex-hero.webp",
+        "/images/products/timex/timex-hero.webp",
+        "/images/products/timex/timex-hero.webp",
       ],
     },
     features: [
@@ -212,12 +212,12 @@ export const PRODUCTS: Record<string, Product> = {
     comparePrice: 699990,
     currency: "CLP",
     images: {
-      hero: "/images/products/falcon/hero.jpg",
-      thumbnail: "/images/products/falcon/thumbnail.jpg",
+      hero: "/images/products/falcon/falcon-hero.webp",
+      thumbnail: "/images/products/falcon/falcon-hero.webp",
       gallery: [
-        "/images/products/falcon/gallery-1.jpg",
-        "/images/products/falcon/gallery-2.jpg",
-        "/images/products/falcon/gallery-3.jpg",
+        "/images/products/falcon/falcon-hero.webp",
+        "/images/products/falcon/falcon-hero.webp",
+        "/images/products/falcon/falcon-hero.webp",
       ],
     },
     features: [
