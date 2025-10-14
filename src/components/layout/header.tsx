@@ -2,15 +2,23 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ShoppingCart, User, Menu, Search } from "lucide-react"
+import { ShoppingCart, User, Menu, Search, Home, Package, HelpCircle, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { CartSidebar } from "@/components/cart/cart-sidebar"
 import { useCartStore } from "@/store/cart-store"
 import { motion } from "framer-motion"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 export function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const itemCount = useCartStore((state) => state.getItemCount())
 
   return (
@@ -87,9 +95,63 @@ export function Header() {
               )}
             </Button>
 
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
+            {/* Mobile Menu */}
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                <SheetHeader>
+                  <SheetTitle className="text-left">Menú</SheetTitle>
+                </SheetHeader>
+                <nav className="mt-8 flex flex-col space-y-4">
+                  <Link
+                    href="/"
+                    className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Home className="h-5 w-5" />
+                    <span>Inicio</span>
+                  </Link>
+                  <Link
+                    href="/productos"
+                    className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Package className="h-5 w-5" />
+                    <span>Productos</span>
+                  </Link>
+                  <Link
+                    href="/como-funciona"
+                    className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <HelpCircle className="h-5 w-5" />
+                    <span>Cómo Funciona</span>
+                  </Link>
+                  <Link
+                    href="/preguntas-frecuentes"
+                    className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <MessageCircle className="h-5 w-5" />
+                    <span>Preguntas Frecuentes</span>
+                  </Link>
+                  <div className="border-t pt-4">
+                    <Link
+                      href="/cuenta"
+                      className="flex items-center space-x-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <User className="h-5 w-5" />
+                      <span>Mi Cuenta</span>
+                    </Link>
+                  </div>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
