@@ -61,7 +61,6 @@ export async function POST(request: Request) {
       return NextResponse.json({
         success: true,
         orderNumber,
-        orderId: orderNumber,
         url: `/pago/webpay?order=${orderNumber}`, // URL temporal
         message: "Orden creada, redirigiendo a Webpay...",
       })
@@ -71,7 +70,6 @@ export async function POST(request: Request) {
     return NextResponse.json({
       success: true,
       orderNumber,
-      orderId: orderNumber,
       message: "Orden creada exitosamente. Te enviamos los datos bancarios por email.",
     })
 

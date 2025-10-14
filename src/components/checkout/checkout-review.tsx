@@ -82,7 +82,7 @@ export function CheckoutReview({ data, onBack }: CheckoutReviewProps) {
         toast.success("Pedido creado exitosamente", {
           description: "Te enviamos los datos bancarios a tu email",
         })
-        window.location.href = `/confirmacion/${result.orderId}`
+        window.location.href = `/confirmacion/${result.orderNumber}`
       }
     } catch (error) {
       console.error("Error:", error)
