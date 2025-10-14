@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -11,7 +11,7 @@ import { motion } from "framer-motion"
 import { formatPrice } from "@/lib/utils"
 import { toast } from "sonner"
 
-export default function WebpayPage() {
+function WebpayPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const orderNumber = searchParams.get("order")
@@ -249,6 +249,25 @@ export default function WebpayPage() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+export default function WebpayPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-primary" />
+            <p className="text-muted-foreground">Cargando...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    }>
+      <WebpayPageContent />
+    </Suspense>
   )
 }
 
