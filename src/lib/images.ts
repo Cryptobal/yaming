@@ -93,7 +93,7 @@ export function getProductImage(
 export function getProductGallery(
   product: keyof typeof PRODUCT_IMAGES,
   usePlaceholder = false
-): string[] {
+): readonly string[] | string[] {
   if (usePlaceholder) {
     return Array(3).fill(PLACEHOLDER_IMAGES.product)
   }
