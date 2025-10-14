@@ -82,9 +82,16 @@ export function HeroSection() {
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-blue-500/20 blur-3xl" />
               
-              {/* Product Image - Using placeholder for now */}
-              <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 to-blue-500/10 flex items-center justify-center">
-                <span className="text-6xl">📦</span>
+              {/* Product Image */}
+              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/products/echo/echo-hero.webp"
+                  alt="E.C.H.O - Sistema Anti-espionaje"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
               </div>
             </div>
           </motion.div>
