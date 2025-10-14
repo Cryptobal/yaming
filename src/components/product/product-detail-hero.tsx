@@ -1,12 +1,15 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react"
 import { Product } from "@/lib/products-data"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { ProductHero } from "@/components/ui/product-image"
+import { useCartStore } from "@/store/cart-store"
+import { toast } from "sonner"
 
 interface ProductDetailHeroProps {
   product: Product
@@ -15,8 +18,16 @@ interface ProductDetailHeroProps {
 export function ProductDetailHero({ product }: ProductDetailHeroProps) {
   const [selectedImage, setSelectedImage] = useState(0)
   const [isZoomed, setIsZoomed] = useState(false)
+  const addItem = useCartStore((state) => state.addItem)
 
   const allImages = [product.images.hero, ...product.images.gallery]
+
+  const handleAddToCart = () => {
+    addItem(product)
+    toast.success(`${product.name} agregado al carrito`, {
+      description: "Puedes continuar comprando o proceder al pago",
+    })
+  }
 
   const nextImage = () => {
     setSelectedImage((prev) => (prev + 1) % allImages.length)
@@ -190,12 +201,27 @@ export function ProductDetailHero({ product }: ProductDetailHeroProps) {
 
             {/* Botones de Acción */}
             <div className="space-y-3">
-              <Button size="lg" className="w-full text-lg h-14">
-                Agregar al Carrito
+              <Button 
+                size="lg" 
+                className="w-full text-lg h-14"
+                onClick={handleAddToCart}
+                disabled={product.stock === 0}
+              >
+                {product.stock === 0 ? "Agotado" : "Agregar al Carrito"}
               </Button>
-              <Button size="lg" variant="outline" className="w-full">
-                Comprar Ahora
-              </Button>
+              <Link href="/checkout" className="w-full">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => {
+                    addItem(product)
+                  }}
+                  disabled={product.stock === 0}
+                >
+                  Comprar Ahora
+                </Button>
+              </Link>
             </div>
 
             {/* Trust Badges */}

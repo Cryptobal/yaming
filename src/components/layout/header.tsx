@@ -1,13 +1,21 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { ShoppingCart, User, Menu, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { CartSidebar } from "@/components/cart/cart-sidebar"
+import { useCartStore } from "@/store/cart-store"
 import { motion } from "framer-motion"
 
 export function Header() {
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const itemCount = useCartStore((state) => state.getItemCount())
+
   return (
+    <>
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -61,14 +69,23 @@ export function Header() {
               </Button>
             </Link>
 
-            <Link href="/carrito">
-              <Button variant="ghost" size="icon" className="relative">
-                <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center">
-                  0
-                </span>
-              </Button>
-            </Link>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="relative"
+              onClick={() => setIsCartOpen(true)}
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {itemCount > 0 && (
+                <motion.span
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center"
+                >
+                  {itemCount}
+                </motion.span>
+              )}
+            </Button>
 
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
@@ -77,6 +94,7 @@ export function Header() {
         </div>
       </div>
     </motion.header>
+    </>
   )
 }
 
