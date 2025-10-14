@@ -323,7 +323,7 @@ export const PRODUCTS: Record<string, Product> = {
         title: "Multi-espectro",
         description: "Efectivo contra diversos sistemas de rastreo y localización",
       },
-    },
+    ],
     specifications: [
       { label: "Tipo de Emisión", value: "Omnidireccional 360°" },
       { label: "Modo de Operación", value: "Standalone / En red" },
