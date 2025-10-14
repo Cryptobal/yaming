@@ -1,19 +1,45 @@
-# Yaming - Marketplace E-commerce de Nivel Mundial
+# 🚀 Yaming - E-commerce de Nivel Mundial
 
-Plataforma e-commerce de nivel mundial construida con Next.js 14+, TypeScript, TailwindCSS y Prisma.
+> Plataforma de e-commerce premium para productos A.U.R.A construida con Next.js 15, TypeScript y TailwindCSS
 
-## 🚀 Características
+[![Deploy](https://img.shields.io/badge/Deploy-Vercel-black)](https://yaming.vercel.app)
+[![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
 
-- ✨ Diseño moderno y responsive (Mobile-first)
-- 🎨 Dark/Light mode con next-themes
-- 🛒 Carrito de compras y checkout completo
-- 💳 Integración con múltiples pasarelas de pago
-- 🚚 Sistema de envíos internacional
-- 🌍 Multi-idioma y localización
-- 📊 Panel de administración completo
-- 🔐 Autenticación con NextAuth.js
-- 📱 PWA support
-- ⚡ Optimizado para SEO y Core Web Vitals
+## ✨ Características Implementadas
+
+### 🛒 Sistema de Carrito Completo
+- ✅ Carrito persistente (LocalStorage)
+- ✅ Sidebar deslizable con animaciones
+- ✅ Agregar/quitar/modificar cantidades
+- ✅ Cálculo automático de totales
+- ✅ Envío gratis sobre $50.000
+
+### 💳 Checkout Multi-Step Optimizado
+- ✅ 4 pasos con validación
+- ✅ Validación de RUT chileno
+- ✅ 16 regiones + comunas de Chile
+- ✅ Métodos de pago: Webpay + Transferencia
+- ✅ Progress indicator visual
+
+### 📧 Sistema de Notificaciones
+- ✅ Email al cliente (confirmación)
+- ✅ Email a admin (carlos.irigoyen@gmail.com)
+- ✅ Templates HTML profesionales
+- ✅ Integración con Resend
+
+### 📦 Productos A.U.R.A
+- ✅ E.C.H.O (Anti-espionaje acústico)
+- ✅ T.I.M.E.X (Gestión de interferencias)
+- ✅ F.A.L.C.O.N (Neutralización aérea)
+- ✅ N.O.I.S.E.R (Contra-vigilancia)
+
+### 🎨 Diseño Premium
+- ✅ Mobile-first responsive
+- ✅ Dark/Light mode
+- ✅ Animaciones con Framer Motion
+- ✅ shadcn/ui components
+- ✅ Optimizado para SEO
 
 ## 🛠️ Tech Stack
 
@@ -28,26 +54,53 @@ Plataforma e-commerce de nivel mundial construida con Next.js 14+, TypeScript, T
 - **Forms:** React Hook Form + Zod
 - **i18n:** next-intl
 
-## 📦 Installation
+## 🚀 Quick Start
 
 ```bash
-# Install dependencies
+# 1. Install dependencies
 npm install
 
-# Setup environment variables
-cp .env.example .env
-
-# Generate Prisma Client
-npm run db:generate
-
-# Push database schema
-npm run db:push
-
-# Run development server
+# 2. Run development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the result.
+Abre [http://localhost:3001](http://localhost:3001) para ver el sitio.
+
+## 💰 Primera Venta en 3 Pasos
+
+### 1. Configura Resend (5 minutos)
+```bash
+# Ver: CONFIGURACION-EMAILS.md
+- Crear cuenta en resend.com
+- Obtener API key
+- Agregar a .env.local:
+  RESEND_API_KEY=re_tu_key_aqui
+```
+
+### 2. Carga Imágenes de Productos
+```bash
+# Ver: CARGA-IMAGENES.md
+# Mínimo: 2 imágenes por producto (hero + thumbnail)
+public/images/products/echo/hero.jpg
+public/images/products/echo/thumbnail.jpg
+# (y así para los 4 productos)
+```
+
+### 3. ¡Comparte el Link!
+```bash
+# Deploy automático en cada push a GitHub
+https://yaming.vercel.app
+
+# O usa tu dominio:
+https://yaming.cl (configurar en Vercel)
+```
+
+## 📚 Documentación Completa
+
+- 📧 **[CONFIGURACION-EMAILS.md](CONFIGURACION-EMAILS.md)** - Setup de emails
+- 🖼️ **[CARGA-IMAGENES.md](CARGA-IMAGENES.md)** - Cómo cargar imágenes
+- 🎉 **[SISTEMA-COMPLETO.md](SISTEMA-COMPLETO.md)** - Overview completo
+- 📋 **[.env.example](.env.example)** - Variables de entorno
 
 ## 🗂️ Project Structure
 
