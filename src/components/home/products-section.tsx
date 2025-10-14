@@ -7,42 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { ShoppingCart, Star } from "lucide-react"
 import { formatPrice } from "@/lib/utils"
 import Link from "next/link"
+import { getFeaturedProducts } from "@/lib/products-data"
 
-const products = [
-  {
-    id: "1",
-    name: "Kit Ya-ming Estándar",
-    description: "Inhibidor de bluetooth de alcance de 5 a 10 metros ideal para espacios abiertos.",
-    price: 89990,
-    comparePrice: 129990,
-    image: "📦",
-    featured: true,
-    rating: 4.8,
-    reviews: 127,
-  },
-  {
-    id: "2",
-    name: "Kit Ya-ming Pro",
-    description: "Upgrade para 30 metros de alcance. Ideal para espacios más amplios y exteriores.",
-    price: 149990,
-    comparePrice: 199990,
-    image: "📡",
-    featured: true,
-    rating: 4.9,
-    reviews: 89,
-  },
-  {
-    id: "3",
-    name: "Kit Ya-ming Premium",
-    description: "Versión premium con máxima potencia y batería extendida para uso profesional.",
-    price: 219990,
-    comparePrice: null,
-    image: "🔋",
-    featured: false,
-    rating: 5.0,
-    reviews: 34,
-  },
-]
+const products = getFeaturedProducts()
 
 export function ProductsSection() {
   return (
@@ -80,11 +47,18 @@ export function ProductsSection() {
                 )}
 
                 <CardHeader>
-                  <div className="w-full aspect-square bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-lg flex items-center justify-center text-6xl mb-4">
-                    {product.image}
+                  <div className="w-full aspect-square bg-gradient-to-br from-primary/10 to-blue-500/10 rounded-lg flex items-center justify-center text-6xl mb-4 overflow-hidden">
+                    <img
+                      src={product.images.thumbnail}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23f3f4f6' width='500' height='500'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='48' fill='%239ca3af'%3E${product.shortName}%3C/text%3E%3C/svg%3E`
+                      }}
+                    />
                   </div>
                   <CardTitle>{product.name}</CardTitle>
-                  <CardDescription>{product.description}</CardDescription>
+                  <CardDescription>{product.tagline}</CardDescription>
                 </CardHeader>
 
                 <CardContent className="flex-1">
@@ -126,13 +100,13 @@ export function ProductsSection() {
                 </CardContent>
 
                 <CardFooter className="flex flex-col gap-2">
-                  <Link href={`/producto/${product.id}`} className="w-full">
+                  <Link href={`/producto/${product.slug}`} className="w-full">
                     <Button className="w-full" size="lg">
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       Comprar Ahora
                     </Button>
                   </Link>
-                  <Link href={`/producto/${product.id}`} className="w-full">
+                  <Link href={`/producto/${product.slug}`} className="w-full">
                     <Button variant="outline" className="w-full">
                       Ver Detalles
                     </Button>
